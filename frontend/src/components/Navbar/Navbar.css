@@ -1,6 +1,9 @@
 /* Navbar.css */
 
-/* Container div styles */
+a{
+    text-decoration: none;
+    color: azure;
+}
 .nav {
     background-color: #2b2d42;
     color: white;
@@ -15,14 +18,14 @@
     height: 70px;
   }
   
-  .nav > div > p {
+  .nav > div >a> p {
     cursor: pointer;
     margin: 0;
     padding: 10px;
     transition: background-color 0.3s ease;
   }
   
-  .nav > div > p:hover {
+  .nav > div >a> p:hover {
     background-color: #3a3e5e;
   }
   

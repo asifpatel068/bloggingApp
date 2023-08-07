@@ -1,0 +1,68 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+  }
+  
+  .card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+  
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+    color: #555;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+  button span {
+    vertical-align: middle;
+  }
+  
+  button > span svg {
+    height: 20px;
+    width: 20px;
+  }
+  
+  button > span svg path {
+    fill: #ccc;
+  }
+  
+  button:hover > span svg path {
+    fill: #ff5733; /* Change this to the desired heart color on hover */
+  }
+  
+  button + button {
+    margin-left: 10px;
+  }
+  
+  /* Optional: Adjust the button styles further to your liking */
+  button {
+    transition: all 0.3s ease;
+    /* Add more styling properties here if needed */
+  }
+  

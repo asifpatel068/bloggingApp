@@ -3,15 +3,17 @@ const express = require("express");
 // const { connection } = require("./Config/db");
 // const { userRouter } = require("./Routes/userRouter");
 const mysql = require('mysql2');
+const cors=require("cors")
+
 require('dotenv').config()
 
 const connection = mysql.createConnection(process.env.DATABASE_URL);
 
 const app = express();
-const port = 3000;
+app.use(cors())
+const port = 7000;
 
 app.use(express.json());
-
 
 connection.connect((error) => {
     if (error) {
