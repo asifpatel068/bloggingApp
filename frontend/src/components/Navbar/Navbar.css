@@ -1,0 +1,61 @@
+/* Navbar.css */
+
+/* Container div styles */
+.nav {
+    background-color: #2b2d42;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .nav > div {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70px;
+  }
+  
+  .nav > div > p {
+    cursor: pointer;
+    margin: 0;
+    padding: 10px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .nav > div > p:hover {
+    background-color: #3a3e5e;
+  }
+  
+
+  .nav > div > p.active {
+    background-color: #ff6b6b;
+    color: #2b2d42;
+    border-radius: 5px;
+  }
+  
+  @keyframes slideIn {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+
+  .nav > div > p:nth-child(1) {
+    animation: slideIn 0.3s ease 0.1s forwards;
+  }
+  
+  .nav > div > p:nth-child(2) {
+    animation: slideIn 0.3s ease 0.2s forwards;
+  }
+  
+  .nav > div > p:nth-child(3) {
+    animation: slideIn 0.3s ease 0.3s forwards;
+  }
+  
+  .nav > div > p:nth-child(4) {
+    animation: slideIn 0.3s ease 0.4s forwards;
+  }
+  
