@@ -10,7 +10,7 @@ export default function Home() {
 
   useEffect(() => {
     axios
-      .get('http://localhost:7000/post')
+      .get('http://13.233.144.219:3001/post')
       .then((response) => {
         const updatedData = response.data.map((item) => ({
           ...item,

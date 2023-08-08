@@ -23,7 +23,7 @@ const Login = () => {
     e.preventDefault();
     if (mode === 'login') {
 
-      fetch('http://localhost:7000/login', {
+      fetch('http://13.233.144.219:3001/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const Login = () => {
           console.error('Login error:', error);
         });
     } else {
-      fetch('http://localhost:7000/register', {
+      fetch('http://13.233.144.219:3001/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
