@@ -26,24 +26,24 @@ connection.connect((error) => {
 
 
       // Middleware to verify guest token
-  const verifyUserToken = (req, res, next) => {
-    const token = req.headers.authorization;
+  // const verifyUserToken = (req, res, next) => {
+  //   const token = req.headers.authorization;
 
-    if (!token) {
-      return res.status(401).json({ message: 'Access denied.' });
-    }
+  //   if (!token) {
+  //     return res.status(401).json({ message: 'Access denied.' });
+  //   }
 
-    jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
-      if (error) {
-        return res.status(401).json({ message: 'Invalid token.' });
-      }
+  //   jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
+  //     if (error) {
+  //       return res.status(401).json({ message: 'Invalid token.' });
+  //     }
 
-      req.userId = decoded.userId;
+  //     req.userId = decoded.userId;
    
 
-      next();
-    });
-  };
+  //     next();
+  //   });
+  // };
 
   
 
@@ -176,7 +176,7 @@ app.get('/post/:id', (req, res) => {
 });
 
 
-app.put('/post/:id',verifyUserToken, (req, res) => {
+app.put('/post/:id', (req, res) => {
   const postId = req.params.id;
   const { title, message, creator, tags, selectedFile } = req.body;
   const query = 'UPDATE posts SET title = ?, message = ?, creator = ?, tags = ?, selectedFile = ? WHERE id = ?';
@@ -191,7 +191,7 @@ app.put('/post/:id',verifyUserToken, (req, res) => {
 });
 
 
-app.delete('/post/:id',verifyUserToken, (req, res) => {
+app.delete('/post/:id', (req, res) => {
   const postId = req.params.id;
   const query = 'DELETE FROM posts WHERE id = ?';
   connection.query(query, [postId], (err) => {
