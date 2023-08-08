@@ -26,7 +26,7 @@ export default function AddPost() {
 
         setFormData({...formData,"tags":tagData})
        console.log(token)
-       fetch('http://localhost:3001/post', {
+       fetch('http://3.109.201.20:3001/post', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
