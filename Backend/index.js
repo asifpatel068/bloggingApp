@@ -26,24 +26,24 @@ connection.connect((error) => {
 
 
       // Middleware to verify guest token
-  // const verifyUserToken = (req, res, next) => {
-  //   const token = req.headers.authorization;
+  const verifyUserToken = (req, res, next) => {
+    const token = req.headers.authorization;
 
-  //   if (!token) {
-  //     return res.status(401).json({ message: 'Access denied.' });
-  //   }
+    if (!token) {
+      return res.status(401).json({ message: 'Access denied.' });
+    }
 
-  //   jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
-  //     if (error) {
-  //       return res.status(401).json({ message: 'Invalid token.' });
-  //     }
+    jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
+      if (error) {
+        return res.status(401).json({ message: 'Invalid token.' });
+      }
 
-  //     req.userId = decoded.userId;
+      req.userId = decoded.userId;
    
 
-  //     next();
-  //   });
-  // };
+      next();
+    });
+  };
 
   
 
@@ -130,7 +130,7 @@ connection.connect((error) => {
 
 
 // post routes 
-  app.post('/post', (req, res) => {
+  app.post('/post',verifyUserToken, (req, res) => {
     const { title, message, creator, tags, Image } = req.body;
     const tagsString = tags.join(', '); 
     const query = 'INSERT INTO posts (title, message, creator, tags, Image) VALUES (?, ?, ?, ?, ?)';

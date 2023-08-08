@@ -26,10 +26,11 @@ export default function AddPost() {
 
         setFormData({...formData,"tags":tagData})
        console.log(token)
-       fetch('http://3.109.201.20:3001/post', {
+       fetch('http://localhost:3001/post', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization':token
         },
         body: JSON.stringify(formData),
       })
@@ -37,7 +38,7 @@ export default function AddPost() {
         .then((data) => {
           console.log(data);
           alert("posted Successfull")
-        })
+        }).catch((err)=>console.log(err))
 
         
     }
@@ -62,7 +63,7 @@ export default function AddPost() {
             <input type="text" id='tags' onChange={handleChange1}/>
             <br />
             <label>Image Link:</label>
-            <input type="text" id='selectedFile' onChange={handleChange}/>
+            <input type="text" id='Image' onChange={handleChange}/>
 
             <button onClick={handleSubmit} type='submit'>Post</button>
         </form>
