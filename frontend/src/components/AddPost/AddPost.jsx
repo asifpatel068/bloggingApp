@@ -1,51 +1,49 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react';
 import './AddPost.css';
 
 export default function AddPost() {
+  const token = localStorage.getItem('userToken') || '';
 
-    const token=  localStorage.getItem("userToken")||""
+  const [formData, setFormData] = useState({});
+  const [tagData, setTagData] = useState();
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-    const [formData,setFormData]=useState({});
-    const [tagData,setTagData]=useState();
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+    setFormData((prevData) => ({ ...prevData, [id]: value }));
+  };
 
-    const handleChange=(event)=>{
-        const {id,value}=event.target;
-        setFormData({...formData,[id]:value})
-    }
+  const handleChangeTags = (event) => {
+    const { value } = event.target;
+    const tags = value.split(',').map((tag) => tag.trim());
+    setTagData(tags);
+  };
 
-    const handleChange1=(event)=>{
-        const {id,value}=event.target;
-        let arr=value.split(",")
-        console.log(arr)
-        setTagData(arr)
-    }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-    const handleSubmit=(e)=>{
-        e.preventDefault();
+    setLoading(true);
+    setError(null);
 
-        setFormData({...formData,"tags":tagData})
-       console.log(token)
-       fetch('http://3.109.201.20:3001/post', {
-        method: 'POST',
+    try {
+      const response = await axios.post('http://3.109.201.20:3001/post', { ...formData, tags: tagData }, {
         headers: {
           'Content-Type': 'application/json',
-          'Authorization':token
+          'Authorization': token,
         },
-        body: JSON.stringify(formData),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-          alert("posted Successfull")
-        }).catch((err)=>console.log(err))
+      });
 
-        
+      console.log(response.data);
+      alert('Posted Successfully');
+    } catch (error) {
+      console.error('Error posting:', error);
+      setError('Error posting: Please check the console for details.');
+    } finally {
+      setLoading(false);
     }
-
-    // useEffect(()=>{
-    //     console.log(formData)
-    // },[formData])
+  };
 
   return (
     <div>
@@ -60,12 +58,16 @@ export default function AddPost() {
             <input type="text" id='creator' onChange={handleChange}/>
             <br />
             <label>Tags:</label>
-            <input type="text" id='tags' onChange={handleChange1}/>
+            <input type="text" id='tags' onChange={handleChangeTags}/>
             <br />
             <label>Image Link:</label>
             <input type="text" id='Image' onChange={handleChange}/>
 
-            <button onClick={handleSubmit} type='submit'>Post</button>
+            <button onClick={handleSubmit} type="submit">
+          {loading ? 'Posting...' : 'Post'}
+        </button>
+
+        {error && <p className="error">{error}</p>}
         </form>
     </div>
   )
