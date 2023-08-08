@@ -1,0 +1,63 @@
+/* PostDetail.css */
+
+/* Container styles */
+.main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Title styles */
+  .main h2 {
+    font-size: 24px;
+    color: #333;
+  }
+  
+  /* Creator styles */
+  .main p {
+    margin: 5px 0;
+    color: #777;
+  }
+  
+  /* Message styles */
+  .main p.message {
+    color: #444;
+  }
+  
+  /* Image styles */
+  .main img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Tags styles */
+  .main .tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+  }
+  
+  .main .tags div {
+    background-color: #ff6b6b;
+    color: white;
+    padding: 5px 10px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+  }
+  
+  /* Responsive styles */
+  @media screen and (max-width: 768px) {
+    .main {
+      padding: 15px;
+    }
+  
+    .main h2 {
+      font-size: 20px;
+    }
+  }
+  

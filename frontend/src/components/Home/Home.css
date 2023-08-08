@@ -53,16 +53,15 @@
   }
   
   button:hover > span svg path {
-    fill: #ff5733; /* Change this to the desired heart color on hover */
+    fill: #ff5733; 
   }
   
   button + button {
     margin-left: 10px;
   }
   
-  /* Optional: Adjust the button styles further to your liking */
+
   button {
     transition: all 0.3s ease;
-    /* Add more styling properties here if needed */
   }
   

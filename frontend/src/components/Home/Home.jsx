@@ -1,7 +1,8 @@
+
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
-import './Home.css';
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -12,7 +13,7 @@ export default function Home() {
       .then((response) => {
         const updatedData = response.data.map((item) => ({
           ...item,
-          val: false, 
+          val: false,
         }));
         setData(updatedData);
       })
@@ -31,10 +32,10 @@ export default function Home() {
   };
 
   return (
-    <div className='container'>
+    <div>
       {data.map((ele) => {
         return (
-          <div key={ele.id} className='card'>
+          <div key={ele.id} className="card">
             <h3>{ele.title}</h3>
             <p>by @{ele.creator}</p>
             <p>{ele.message}</p>
@@ -42,7 +43,9 @@ export default function Home() {
               <button onClick={() => handleToggle(ele.id)}>
                 {ele.val ? <span><AiFillHeart /></span> : <span><AiOutlineHeart /></span>}
               </button>
-              <button>View Post</button>
+              <Link to={`/post/${ele.id}`}>
+                <button>View Post</button>
+              </Link>
             </div>
           </div>
         );

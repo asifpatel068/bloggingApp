@@ -2,6 +2,8 @@ const express = require("express");
 // const { postRouter } = require("./Routes/postRouter");
 // const { connection } = require("./Config/db");
 // const { userRouter } = require("./Routes/userRouter");
+const bcrypt=require("bcrypt");
+const jwt=require("jsonwebtoken")
 const mysql = require('mysql2');
 const cors=require("cors")
 
@@ -21,6 +23,35 @@ connection.connect((error) => {
       return;
     }
     console.log('Connected to PlanetScale!');
+
+
+      // Middleware to verify guest token
+  const verifyUserToken = (req, res, next) => {
+    const token = req.headers.authorization;
+
+    if (!token) {
+      return res.status(401).json({ message: 'Access denied.' });
+    }
+
+    jwt.verify(token, process.env.JWT_SECRET, (error, decoded) => {
+      if (error) {
+        return res.status(401).json({ message: 'Invalid token.' });
+      }
+
+      req.userId = decoded.userId;
+   
+
+      next();
+    });
+  };
+
+  
+
+
+
+
+
+
 
 // home route
     app.get("/",async(req,res)=>{
@@ -84,8 +115,8 @@ connection.connect((error) => {
           const token = jwt.sign({ userId: user.id, role: user.role }, process.env.JWT_SECRET);
           const query1='SELECT name FROM bloguser WHERE email = ?';
            connection.query(query1, [email], (error, results) => {
-          const name=results[0]
-          res.status(200).json({ success: true, token , name});
+          const data=results[0]
+          res.status(200).json({ success: true, token , data});
            })
           
         } else {
@@ -99,7 +130,7 @@ connection.connect((error) => {
 
 
 // post routes 
-  app.post('/post', (req, res) => {
+  app.post('/post',verifyUserToken, (req, res) => {
     const { title, message, creator, tags, selectedFile } = req.body;
     const tagsString = tags.join(', '); 
     const query = 'INSERT INTO posts (title, message, creator, tags, selectedFile) VALUES (?, ?, ?, ?, ?)';
@@ -145,7 +176,7 @@ app.get('/post/:id', (req, res) => {
 });
 
 
-app.put('/post/:id', (req, res) => {
+app.put('/post/:id',verifyUserToken, (req, res) => {
   const postId = req.params.id;
   const { title, message, creator, tags, selectedFile } = req.body;
   const query = 'UPDATE posts SET title = ?, message = ?, creator = ?, tags = ?, selectedFile = ? WHERE id = ?';
@@ -160,7 +191,7 @@ app.put('/post/:id', (req, res) => {
 });
 
 
-app.delete('/post/:id', (req, res) => {
+app.delete('/post/:id',verifyUserToken, (req, res) => {
   const postId = req.params.id;
   const query = 'DELETE FROM posts WHERE id = ?';
   connection.query(query, [postId], (err) => {

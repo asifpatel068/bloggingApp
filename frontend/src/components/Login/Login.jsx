@@ -101,12 +101,12 @@ const Login = () => {
           {mode === 'signup' && (
             <>
               <div className="form-group">
-                <label htmlFor="dob">Date of Birth</label>
+                <label htmlFor="profilepicture">Profile Picture</label>
                 <input
                   type="text"
                   id="profilepicture"
                   name="profilepicture"
-                  value={formData.dob}
+                  value={formData.profilepicture}
                   onChange={handleChange}
                   required
                 />

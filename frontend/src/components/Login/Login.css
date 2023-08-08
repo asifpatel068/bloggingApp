@@ -3,13 +3,13 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #fafafa; /* Light gray background color */
+    background-color: #fafafa;
   }
   
   .form-container {
     max-width: 500px;
     padding: 50px;
-    background-color: #fff; /* White background color */
+    background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
@@ -28,7 +28,7 @@
   label {
     display: block;
     font-size: 14px;
-    color: #999; /* Light gray label color */
+    color: #999;
     margin-bottom: 5px;
   }
   
@@ -40,17 +40,17 @@
     width: 95%;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #dbdbdb; /* Light gray border color */
+    border: 1px solid #dbdbdb; 
     border-radius: 4px;
-    background-color: #fafafa; /* Light gray input background color */
+    background-color: #fafafa;
   }
   
   input[type='submit'] {
     width: 100%;
     padding: 10px;
     font-size: 16px;
-    background-color: #3897f0; /* Instagram blue button background color */
-    color: #fff; /* White button text color */
+    background-color: #3897f0;
+    color: #fff; 
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -58,7 +58,7 @@
   }
   
   input[type='submit']:hover {
-    background-color: #3182d6; /* Darker shade of Instagram blue for button hover */
+    background-color: #3182d6; 
   }
   
   .mode-switch {
@@ -66,12 +66,12 @@
   }
   
   .mode-switch span {
-    color: #999; /* Light gray link color */
+    color: #999;
     cursor: pointer;
     text-decoration: underline;
   }
   
-  /* Responsive styles */
+
   @media screen and (max-width: 600px) {
     .form-container {
       max-width: 100%;
