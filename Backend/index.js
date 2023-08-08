@@ -131,16 +131,16 @@ connection.connect((error) => {
 
 // post routes 
   app.post('/post', (req, res) => {
-    const { title, message, creator, tags, selectedFile } = req.body;
+    const { title, message, creator, tags, Image } = req.body;
     const tagsString = tags.join(', '); 
-    const query = 'INSERT INTO posts (title, message, creator, tags, selectedFile) VALUES (?, ?, ?, ?, ?)';
-    connection.query(query, [title, message, creator, tagsString, selectedFile], (err, result) => {
+    const query = 'INSERT INTO posts (title, message, creator, tags, Image) VALUES (?, ?, ?, ?, ?)';
+    connection.query(query, [title, message, creator, tagsString, Image], (err, result) => {
       if (err) {
         console.error('Error creating a new post:', err);
         res.status(500).json({ error: 'Failed to create a new post' });
         return;
       }
-      res.status(201).json({ id: result.insertId, title, message, creator, tags, selectedFile });
+      res.status(201).json({ id: result.insertId, title, message, creator, tags, Image });
     });
 });
 
@@ -178,15 +178,15 @@ app.get('/post/:id', (req, res) => {
 
 app.put('/post/:id', (req, res) => {
   const postId = req.params.id;
-  const { title, message, creator, tags, selectedFile } = req.body;
-  const query = 'UPDATE posts SET title = ?, message = ?, creator = ?, tags = ?, selectedFile = ? WHERE id = ?';
-  connection.query(query, [title, message, creator, tags, selectedFile, postId], (err) => {
+  const { title, message, creator, tags, Image } = req.body;
+  const query = 'UPDATE posts SET title = ?, message = ?, creator = ?, tags = ?, Image = ? WHERE id = ?';
+  connection.query(query, [title, message, creator, tags, Image, postId], (err) => {
     if (err) {
       console.error('Error updating the blog post:', err);
       res.status(500).json({ error: 'Failed to update the blog post' });
       return;
     }
-    res.json({ id: postId, title, message, creator, tags, selectedFile });
+    res.json({ id: postId, title, message, creator, tags, Image });
   });
 });
 

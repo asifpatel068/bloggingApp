@@ -28,7 +28,7 @@ export default function PostDetail() {
       <p>by @{postData.creator}</p>
       <p>{postData.message}</p>
       <div>
-        <img src={postData.selectedFile} alt="Post" />
+        <img src={postData.Image} alt="Post" />
       </div>
       <div>
         {tags.map((e) => {
