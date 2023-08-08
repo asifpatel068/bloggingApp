@@ -37,12 +37,12 @@ export default function Home() {
       {data.map((ele) => {
         return (
           <div key={ele.id} className="card">
+            <img src={ele.Image} alt="" />
             <h3>{ele.title}</h3>
-            <p>by @{ele.creator}</p>
-            <p>{ele.message}</p>
+         
             <div>
               <button onClick={() => handleToggle(ele.id)}>
-                {ele.val ? <span><AiFillHeart /></span> : <span><AiOutlineHeart /></span>}
+                {ele.val ? <span><AiFillHeart />{ele.likeCount+1}</span> : <span><AiOutlineHeart />{ele.likeCount}</span>}
               </button>
               <Link to={`/post/${ele.id}`}>
                 <button>View Post</button>
