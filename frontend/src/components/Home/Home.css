@@ -1,67 +1,77 @@
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-  
-  .card {
-    border: 1px solid #ddd;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
-  }
-  
-  .card h3 {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .card p {
-    font-size: 14px;
-    margin-bottom: 15px;
-  }
-  
-  button {
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-size: 16px;
-    color: #555;
-  }
-  
-  button:focus {
-    outline: none;
-  }
-  
-  button span {
-    vertical-align: middle;
-  }
-  
-  button > span svg {
-    height: 20px;
-    width: 20px;
-  }
-  
-  button > span svg path {
-    fill: #ccc;
-  }
-  
-  button:hover > span svg path {
-    fill: #ff5733; 
-  }
-  
-  button + button {
-    margin-left: 10px;
-  }
-  
+/* Home.css */
 
-  button {
-    transition: all 0.3s ease;
+/* Container styles */
+.container {
+  width: 80%;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+/* Card styles */
+.card {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Title styles */
+.card h3 {
+  font-size: 20px;
+  color: #333;
+}
+
+/* Creator styles */
+.card p {
+  margin: 5px 0;
+  color: #777;
+}
+
+/* Message styles */
+.card p {
+  color: #444;
+}
+
+/* Buttons styles */
+.card button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  padding: 5px;
+  margin-right: 10px;
+  transition: color 0.3s ease;
+}
+
+.card button:hover {
+  color: #ff6b6b;
+}
+
+/* Filled heart icon styles */
+.card button .filled-heart {
+  color: #ff6b6b;
+}
+
+/* View Post button styles */
+.card .view-button {
+  background-color: #ff6b6b;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .container {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
   }
-  
+}

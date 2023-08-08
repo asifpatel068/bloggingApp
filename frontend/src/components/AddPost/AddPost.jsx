@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 
 export default function AddPost() {
 
+    const token=  localStorage.getItem("userToken")||""
+
     const [formData,setFormData]=useState({});
     const [tagData,setTagData]=useState();
 
@@ -22,12 +24,17 @@ export default function AddPost() {
         e.preventDefault();
 
         setFormData({...formData,"tags":tagData})
-       
-        axios.post("http://localhost:7000/post",formData)
-        .then((res)=>{
-            console.log(res.data)
-            alert("Post Added Successfully")
+       console.log(token)
+        fetch("http://localhost:7000/post",{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token
+              },
+              method: "POST",
+              body: JSON.stringify(formData)
         })
+        .then((res) => res.json())
+        .then((data) => alert("Added post data"))
         
     }
 

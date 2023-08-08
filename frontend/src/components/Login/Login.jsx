@@ -34,10 +34,12 @@ const Login = () => {
         .then((data) => {
 
           console.log('Login:', data);
-        //   localStorage.setItem("guestToken",data.token)
+          localStorage.setItem("userToken",data.token)
+          alert("Login Successfull")
           navigate('/', { replace: true });
         })
         .catch((error) => {
+          alert("Login failed")
           console.error('Login error:', error);
         });
     } else {
@@ -51,9 +53,12 @@ const Login = () => {
         .then((response) => response.json())
         .then((data) => {
           console.log('Signup:', data);
+          alert("Signup Successfull")
         })
         .catch((error) => {
           console.error('Signup error:', error);
+          alert("Signup failed")
+          
         });
     }
   };

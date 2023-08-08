@@ -8,8 +8,7 @@ export default function PostDetail() {
   const [postData, setPostData] = useState(null);
   const [tags,setTags]=useState();
 
-  useEffect(() => {
-    console.log(Id)
+
     axios.get(`http://localhost:7000/post/${Id}`)
       .then((response) => {
         console.log(response.data)
@@ -19,8 +18,7 @@ export default function PostDetail() {
         console.log(typeof newarr)
       })
       .catch((error) => console.log('Error fetching post data:'));
-  }, []);
-
+ 
  
 
   return (

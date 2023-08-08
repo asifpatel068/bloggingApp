@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
+import './Home.css';
 
 export default function Home() {
   const [data, setData] = useState([]);
@@ -32,7 +33,7 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div  className="container">
       {data.map((ele) => {
         return (
           <div key={ele.id} className="card">
