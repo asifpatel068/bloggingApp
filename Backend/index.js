@@ -130,7 +130,7 @@ connection.connect((error) => {
 
 
 // post routes 
-  app.post('/post',verifyUserToken, (req, res) => {
+  app.post('/post', (req, res) => {
     const { title, message, creator, tags, selectedFile } = req.body;
     const tagsString = tags.join(', '); 
     const query = 'INSERT INTO posts (title, message, creator, tags, selectedFile) VALUES (?, ?, ?, ?, ?)';

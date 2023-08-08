@@ -25,16 +25,12 @@ export default function AddPost() {
 
         setFormData({...formData,"tags":tagData})
        console.log(token)
-        fetch("http://13.233.144.219:3001/post",{
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': token
-              },
-              method: "POST",
-              body: JSON.stringify(formData)
-        })
-        .then((res) => res.json())
-        .then((data) => alert("Added post data"))
+       axios.post("http://3.109.201.20:3001/post",formData)
+       .then((res)=>{
+           console.log(res.data)
+           alert("Post Added Successfully")
+       })
+
         
     }
 

@@ -9,7 +9,7 @@ export default function PostDetail() {
   const [tags,setTags]=useState();
 
 
-    axios.get(`http://13.233.144.219:3001/post/${Id}`)
+    axios.get(`http://3.109.201.20:3001/post/${Id}`)
       .then((response) => {
         console.log(response.data)
         setPostData(response.data);

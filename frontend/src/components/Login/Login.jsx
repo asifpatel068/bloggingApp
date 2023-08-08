@@ -23,7 +23,7 @@ const Login = () => {
     e.preventDefault();
     if (mode === 'login') {
 
-      fetch('http://13.233.144.219:3001/login', {
+      fetch('http://3.109.201.20:3001/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const Login = () => {
           console.error('Login error:', error);
         });
     } else {
-      fetch('http://13.233.144.219:3001/register', {
+      fetch('http://3.109.201.20:3001/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
