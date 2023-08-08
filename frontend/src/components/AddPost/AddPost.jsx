@@ -67,7 +67,7 @@ export default function AddPost() {
           {loading ? 'Posting...' : 'Post'}
         </button>
 
-        {error && <p className="error">{error}</p>}
+        {error && <p className="error">{error}<br/><b>Please Login Again</b></p>}
         </form>
     </div>
   )
