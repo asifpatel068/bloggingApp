@@ -1,0 +1,43 @@
+.Addpost {
+    width: 450px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  .Addpost label {
+    font-weight: bold;
+  }
+  
+  .Addpost input[type="text"] {
+    width: 95%;
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .Addpost button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .Addpost button:hover {
+    background-color: #2980b9;
+  }
+
+  
+  @media (max-width: 768px) {
+    .Addpost {
+      width: 100%;
+    }
+  }
+  
