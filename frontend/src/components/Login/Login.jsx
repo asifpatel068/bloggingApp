@@ -34,9 +34,15 @@ const Login = () => {
         .then((data) => {
 
           console.log('Login:', data);
-          localStorage.setItem("userToken",data.token)
-          alert("Login Successfull")
-          navigate('/', { replace: true });
+          if(data.success){
+                localStorage.setItem("userToken",data.token)
+              localStorage.setItem("name",data.data.name)
+              alert("Login Successfull")
+              navigate('/', { replace: true });
+          }else{
+            alert("Login failed")
+          }
+      
         })
         .catch((error) => {
           alert("Login failed")
