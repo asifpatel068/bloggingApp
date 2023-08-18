@@ -28,7 +28,7 @@ export default function AddPost() {
     setError(null);
 
     try {
-      const response = await axios.post('http://3.109.201.20:3001/post', { ...formData, tags: tagData }, {
+      const response = await axios.post('https://bloggingapp-b5gx.onrender.com/post', { ...formData, tags: tagData }, {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': token,

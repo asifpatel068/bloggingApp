@@ -10,7 +10,7 @@ export default function PostDetail() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios.get(`http://3.109.201.20:3001/post/${Id}`)
+    axios.get(`https://bloggingapp-b5gx.onrender.com/post/${Id}`)
       .then((response) => {
         console.log(typeof response.data)
         console.log(response.data)

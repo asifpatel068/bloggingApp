@@ -23,7 +23,7 @@ const Login = () => {
     e.preventDefault();
     if (mode === 'login') {
 
-      fetch('http://3.109.201.20:3001/login', {
+      fetch('https://bloggingapp-b5gx.onrender.com/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -49,7 +49,7 @@ const Login = () => {
           console.error('Login error:', error);
         });
     } else {
-      fetch('http://3.109.201.20:3001/register', {
+      fetch('https://bloggingapp-b5gx.onrender.com/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
